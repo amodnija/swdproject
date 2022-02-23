@@ -1,0 +1,24 @@
+{% extends "demo/leave.html" %}
+
+{% block title %}All Leaves{% endblock title %}
+
+{% block content %}
+<h1>All Leaves</h1>
+
+<table style="border-collapse:collapse">
+    <tr class="quotehdr"><th>ID</th><th>Client Name
+</th>
+        <th>Company</th><th>Submitted</th>
+        <th>Quoted</th><th>Quote Price</th>
+    </tr>
+    {% for leave in all_leaves %}
+    <tr><td>ID:</td><td>{{ leave.id }}</td></tr>
+    <tr><td>Name:</td><td>{{ leave.name }}</td></tr>
+    <tr><td>Start of leave:</td><td>{{ leave.leavestart }}</td></tr>
+    <tr><td>End of leave</td><td>{{ leave.leaveend }}</td></tr>
+    <tr><td>Reason:</td><td>{{ leave.reason }}</td></tr>
+    <tr><td>Availibility:</td><td>{{ leave.availibility }}</td></tr>
+    <tr><td>Approval</td><td>{{ leave.approval }}</td></tr> 
+    {% endfor %}
+</table>
+{% endblock content %}
