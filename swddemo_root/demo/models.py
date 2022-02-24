@@ -10,8 +10,8 @@ APPROVAL_CHOICES = (
 class Leave(models.Model):
     name = models.CharField(max_length=100)
     designation = models.CharField(max_length=60)
-    leavestart = models.DateField()
-    leaveend = models.DateField()
+    leavestart = models.DateField('Start date of leave')
+    leaveend = models.DateField('End date of leave')
     reason = models.TextField()
     availibilty = models.CharField(max_length=20)
     approval = models.CharField(max_length=40, choices=APPROVAL_CHOICES)

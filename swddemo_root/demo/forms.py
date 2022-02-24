@@ -11,3 +11,6 @@ class LeaveForm(ModelForm):
             'reason'
         ]
 
+class ApprovalForm(forms.Form):
+    approval = forms.CharField(max_length=40)
+

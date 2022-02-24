@@ -3,16 +3,16 @@
 {% block title %}All leaves{% endblock title %}
 
 {% block content %}
-<h1>leave Detail</h1>
+<h1>Leave Details</h1>
 
 <table class="leave">
   <tr><td>ID:</td><td>{{ leave.id }}</td></tr>
   <tr><td>Name:</td><td>{{ leave.name }}</td></tr>
   <tr><td>Start of leave:</td><td>{{ leave.leavestart }}</td></tr>
-  <tr><td>End of leave</td><td>{{ leave.leaveend }}</td></tr>
+  <tr><td>End of leave:</td><td>{{ leave.leaveend }}</td></tr>
   <tr><td>Reason:</td><td>{{ leave.reason }}</td></tr>
   <tr><td>Availibility:</td><td>{{ leave.availibility }}</td></tr>
-  <tr><td>Approval</td><td>{{ leave.approval }}</td></tr> 
+  <tr><td>Approval:</td><td>{{ leave.approval|default:'pending' }}</td></tr> 
 </table>
 <p><a href="../show">Back to leave list</a></p>
 {% endblock content %}
