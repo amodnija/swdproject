@@ -3,17 +3,18 @@
 {% block content %}
 <table class="quote">
     <tr class="quotehdr">
-    <th>ID</th><th>Name</th><th>Start of leave</th><th>End of leave</th><th>Reason</th><th>Availibility</th><th>Approval</th>
+    <th>Approve/Deny</th><th>Name</th><th>Start of leave</th><th>End of leave</th><th>Reason</th><th>Availibility</th><th>Approval</th><th>Submitted On</th>
     </tr>
     {% for leave in all_leaves %}
     <tr class="quoterow {% cycle '' 'altrow' %}">
-        <td><a href="show/{{ leave.id }}">{{ leave.id }}</a></td>
+        <td><a href="show/{{ leave.id }}">Edit Approval</a></td>
         <td>{{ leave.name }}</td>
         <td>{{ leave.leavestart }}</td>
         <td>{{ leave.leaveend }}</td>
         <td>{{ leave.reason }}</td>
         <td>{{ leave.availibilty }}</td>
         <td>{{ leave.approval|default:'pending' }}</td>
+        <td>{{ leave.submitted }}</td>
     </tr>
     {% endfor %}
 </table>

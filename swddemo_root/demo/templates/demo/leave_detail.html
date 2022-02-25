@@ -11,8 +11,12 @@
   <tr><td>Start of leave:</td><td>{{ leave.leavestart }}</td></tr>
   <tr><td>End of leave:</td><td>{{ leave.leaveend }}</td></tr>
   <tr><td>Reason:</td><td>{{ leave.reason }}</td></tr>
-  <tr><td>Availibility:</td><td>{{ leave.availibility }}</td></tr>
+  <tr><td>Availibility:</td><td>{{ leave.availibilty }}</td></tr>
   <tr><td>Approval:</td><td>{{ leave.approval|default:'pending' }}</td></tr> 
 </table>
-<p><a href="../show">Back to leave list</a></p>
+<form method="POST">
+  <button type="submit" name="set_done">Change Approval</button>
+  {% csrf_token %}
+</form><p><a href="../show">See All Leaves</a></p>
+
 {% endblock content %}
