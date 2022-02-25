@@ -15,8 +15,13 @@
   <tr><td>Approval:</td><td>{{ leave.approval|default:'pending' }}</td></tr> 
 </table>
 <form method="POST">
-  <button type="submit" name="set_done">Change Approval</button>
+  <button type="submit" name="approve">Approve</button>
   {% csrf_token %}
-</form><p><a href="../show">See All Leaves</a></p>
+</form>
+<form method="POST">
+  <button type="submit" name="unapprove">Unapprove</button>
+  {% csrf_token %}
+</form>
+<p><a href="../show">See All Leaves</a></p>
 
 {% endblock content %}

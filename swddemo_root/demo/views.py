@@ -45,17 +45,20 @@ class LeaveView(DetailView):
         context = super(LeaveView, self).get_context_data(**kwargs)
         return context
 
-    def validate(self,obj):
-        if (obj.approval == 'Not Approved'):
-            Leave(id=obj.id,name=obj.name,leavestart=obj.leavestart,leaveend=obj.leaveend,reason=obj.reason,availibilty=obj.availibilty,approval='Approved',submitted=obj.submitted).save()
-        elif (obj.approval == "Approved"):
-            Leave(id=obj.id,name=obj.name,leavestart=obj.leavestart,leaveend=obj.leaveend,reason=obj.reason,availibilty=obj.availibilty,approval='Not Approved',submitted=obj.submitted).save()
+    def approve(self,obj):
+        Leave(id=obj.id,name=obj.name,leavestart=obj.leavestart,leaveend=obj.leaveend,reason=obj.reason,availibilty=obj.availibilty,approval='Approved',submitted=obj.submitted).save()
 
+    def unapprove(self,obj):
+        Leave(id=obj.id,name=obj.name,leavestart=obj.leavestart,leaveend=obj.leaveend,reason=obj.reason,availibilty=obj.availibilty,approval='Not Approved',submitted=obj.submitted).save()
+ 
     def post(self, request, *args, **kwargs):
-        if "set_done" in request.POST:
-            self.validate(self.get_object())
+        if "approve" in request.POST:
+            self.approve(self.get_object())
             return HttpResponseRedirect(self.request.path_info)
-
+        elif "unapprove" in request.POST:
+            self.unapprove(self.get_object())
+            return HttpResponseRedirect(self.request.path_info)
+                        
 def leave_req(request):
     submitted = False
     if request.method == 'POST':
@@ -67,6 +70,7 @@ def leave_req(request):
             print(c)
             if c>2:
                 leave.availibilty = "No"
+                leave.approval = "Not Approved"
             else:
                 leave.availibilty = "Yes"
             Leave(id=leave.id,name=leave.name.lower().title(),leavestart=leave.leavestart,leaveend=leave.leaveend,reason=leave.reason,availibilty=leave.availibilty,approval=leave.approval).save()
