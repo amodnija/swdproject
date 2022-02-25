@@ -14,3 +14,5 @@ The edit approval page show the details of the leave and allows users to approve
 The web app ensures that a user can only have 10 leaves with availibility set as 'yes'.
 
 If time permits, I wish to add user authentication and user management to this app.
+
+(This repo also contains a python virtual environment with a 3.x django installation)
